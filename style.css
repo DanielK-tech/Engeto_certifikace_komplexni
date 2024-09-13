@@ -376,6 +376,29 @@ nav ul li a::before {
 *******************************************
 ****************************************/
 
+/******* šipka ******/
+.arrow-up{ 
+    display: flex;
+    justify-content: right;
+    width: 95%;
+    
+   
+} 
+
+#arrow-UP{ 
+    /* position: fixed; */
+    width: 2%;
+    transition: transform 1.8s ease;
+    display: none;
+    
+} 
+
+#arrow-UP:hover{ 
+    cursor: pointer;   
+    transform: scale(1.9);
+}
+
+
 /************ footer **************/ 
 
 footer { 

@@ -6,6 +6,7 @@ const footerInPage = document.querySelector('footer');
 const LoginFormular = document.querySelector('.login-section');
 const InvalidTryText = document.querySelector('.invalid');
 const Header = document.querySelector('header');
+const Arrow = document.getElementById('arrow-UP');
 const PasswordInput = document.getElementById('password1');
 const PasswordCheck = document.getElementById('password2');
 const LoginButton = document.getElementById('Login');
@@ -19,6 +20,10 @@ if (DarkMode) {
 if (LoginButton) {
     LoginButton.addEventListener('click', PassChecking);
 }
+if (Arrow) {
+    Arrow.addEventListener('click', ArrowUp);
+}
+window.addEventListener('scroll', ScrollingDown);
 function bodyClick() {
     if (DarkMode.checked) {
         BodyInPage.classList.add("dark-mode");
@@ -45,4 +50,16 @@ function PassChecking(event) {
     else {
         InvalidTryText.classList.add('none');
     }
+}
+function ScrollingDown() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        Arrow.style.display = 'block';
+    }
+    else {
+        Arrow.style.display = 'none';
+    }
+}
+function ArrowUp() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    Arrow.style.display = 'none';
 }

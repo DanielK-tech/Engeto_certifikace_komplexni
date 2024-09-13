@@ -5,12 +5,13 @@ const footerInPage = document.querySelector('footer') as HTMLElement;
 const LoginFormular = document.querySelector('.login-section') as HTMLDivElement;
 const InvalidTryText = document.querySelector('.invalid') as HTMLParagraphElement; //invalid paragraf
 const Header = document.querySelector('header') as HTMLElement //header
+const Arrow = document.getElementById('arrow-UP') as HTMLImageElement
 //formulář na hesla
 const PasswordInput = document.getElementById('password1') as HTMLInputElement;
 const PasswordCheck = document.getElementById('password2') as HTMLInputElement;
 // tlačítko přihlásit se
 const LoginButton = document.getElementById('Login') as HTMLInputElement;
-
+/*********************************************************************************************************** */
 
 /** vytahnutí proměných z css */
 const root = document.documentElement;
@@ -29,6 +30,12 @@ if (LoginButton) {
   LoginButton.addEventListener('click', PassChecking);
 }
 
+if (Arrow) {
+  Arrow.addEventListener('click', ArrowUp);
+}
+
+window.addEventListener('scroll', ScrollingDown);
+
 /** funkce pro dark mode */
 
 function bodyClick() {
@@ -40,7 +47,7 @@ function bodyClick() {
     footerInPage.style.background = darkModeColor;
   } else {
     BodyInPage.classList.remove('dark-mode');
-    Header.style.background = headerOriginal; 
+    Header.style.background = headerOriginal;
     menuBackgroud.style.background = originalBackgroundColor;
     LoginFormular.style.background = originalBackgroundColor;
     footerInPage.style.background = originalBackgroundColor;
@@ -61,4 +68,20 @@ function PassChecking(event: any) {
     InvalidTryText.classList.add('none');
   }
 }
+/****************************************** */
+
+/** funkce na scrolování **/
+function ScrollingDown() {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    Arrow.style.display = 'block';
+  } else {
+    Arrow.style.display = 'none';
+  }
+}
+
+function ArrowUp() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  Arrow.style.display = 'none';
+}
+
 
