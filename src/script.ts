@@ -40,7 +40,7 @@ function bodyClick() {
     footerInPage.style.background = darkModeColor;
   } else {
     BodyInPage.classList.remove('dark-mode');
-    Header.style.background = headerOriginal;
+    Header.style.background = headerOriginal; 
     menuBackgroud.style.background = originalBackgroundColor;
     LoginFormular.style.background = originalBackgroundColor;
     footerInPage.style.background = originalBackgroundColor;

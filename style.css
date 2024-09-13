@@ -280,13 +280,14 @@ nav ul li a::before {
 /*druhá sekce */
 #about-me { 
     display: flex; 
-    justify-content: space-evenly;
+    justify-content: space-evenly;    
 }
 
 /* o mě div*/ 
 .my-description { 
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 50%;    
     border: 2px solid var(--menu-color);
     border-radius: 5px;
@@ -295,6 +296,18 @@ nav ul li a::before {
     h2 { 
         margin: 0 auto;        
     }
+} 
+
+.my-description::before { 
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--podsviceni);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
 }
 
 /*paragraf o mě */
