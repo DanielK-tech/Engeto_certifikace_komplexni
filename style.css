@@ -1,0 +1,394 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+/*************************************************
+*****  Barvičky a velikosti               
+*/
+:root {
+  --dark_mode: #000;
+  --darMode_text: #fff; 
+  --menu_background: rgba(67, 67, 87,0.7);
+    /* menu*/
+  --menu-color:rgba(0, 0, 0, 0.7);;
+  --border-color-menu: #dc4f00; 
+  --podsviceni:radial-gradient(circle farthest-corner at 10% 20%, rgba(255, 94, 247, 1) 17.8%, rgba(2, 245, 255, 1) 100.2%);
+  /*hamburger*/
+  --hamburger: rgb(20, 20, 180);
+} 
+
+.none { 
+    display: none;
+}
+
+/**************************************************/ 
+/**************************************************/
+body {
+    display: flex; 
+    flex-direction: column;   
+    min-height: 100vh;
+    font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s;  
+} 
+
+header { 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url(./img/img_4.jpg);
+}
+
+.dark-mode {
+  background-color: var(--dark_mode);
+  color: var(--darMode_text);
+}
+/***********************************************/ 
+/***********************************************/
+
+/*h1*/
+.main { 
+    display: flex;
+    justify-content: center;
+    color: var(--darMode_text);
+   margin-top: 100px;
+   margin-bottom: 10px;
+    
+}
+
+/* header main div */
+.welcoming { 
+
+   margin: 0 auto;  
+    width: 100%; 
+} 
+
+
+/**********************/
+/*text*/ 
+
+.welcoming-text {       
+    color: var(--darMode_text);
+    padding: 5%;
+    p{ 
+        text-align: center;
+        font-size: 1.8em;
+        line-height: 1.5;
+    }
+}
+
+
+/************************************************************/
+
+/*hamburger */
+#hamburger { 
+    margin-left: 65%;
+    position: fixed; 
+    z-index: 51;
+} 
+
+@media (min-width: 610px) { 
+    #hamburger { 
+        display: none;
+    }
+}
+.piece { 
+        
+    margin-top: 5px; 
+    height: 10px; 
+    aspect-ratio: 5/1;
+    border-radius: 20% / 90%;
+    background-color: var(--hamburger);
+
+} 
+
+#hamburger:active div:first-child{ 
+    transform: translateY(15px) translateX(-5px) 
+                rotate(45deg);
+} 
+
+#hamburger:active div:nth-child(2){ 
+    transform: translateX(10px) rotate(-45deg);
+} 
+#hamburger:active div:last-child{ 
+    transform: translateY(-15px) translateX(10px) 
+                rotate(-45deg);
+} 
+
+#hamburger:active div { 
+    aspect-ratio: 3/1;
+} 
+
+/*******************************************************
+*******************************************************/ 
+
+/**** dark mode */
+#mode { 
+    position: fixed;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10%;
+    z-index: 51;
+    
+}
+
+/* checkbox **/
+#Dark{ 
+    margin-right: 5px;
+    height: 50px;
+    width: 50px;    
+} 
+/***********/
+/*label k checkboxu*/
+#labelkaDark { 
+    margin-top: 4%; 
+    color: #fff;
+    font-size: 29px; 
+    font-family: sans-serif;
+} 
+
+#labelkaDark::before { 
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--podsviceni);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+/***********************************************************/
+/***********************************************************/
+/********** Menu ***/ 
+.pozadi-navigace {
+    position: fixed;    
+    width: 100%;
+    height: 4em;
+    background: var(--menu-color);
+    z-index: 10;
+} 
+/** položky v menu */
+nav ul {   
+    /* float: right; */    
+    font-size: 29px;
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 40%;
+    z-index: 100;
+}
+
+nav ul li {    
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a:link,
+nav ul li a:visited {
+    color: rgb(255, 247, 247);
+    text-decoration: none;
+    font-size: 100%;
+    border-bottom: 2px solid transparent;
+    position: relative; 
+    font-family: serif;   
+}
+
+nav ul li a:hover,
+nav ul li a:active {
+    transition: border-bottom 2.5s;
+    border-bottom: 2px solid transparent;    
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--border-color-menu); /* barva podtržítka*/
+    transition: width 2.5s;
+    z-index: 1;    
+} 
+nav ul li a:hover::after,
+nav ul li a:active::after {
+    width: 100%;
+}
+
+/* Gradientní pozadí za textem */
+
+nav ul li a::before {   
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--podsviceni);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+} 
+
+/*****************************************************/
+
+
+/*******************************************/
+
+/*první sekce */
+
+.section { 
+    margin-top: 100px;
+    
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+   flex-direction: column;
+
+   h2{ 
+    margin-bottom: 5px;
+   }
+} 
+/***********************************************************/
+/** sekce s fotkami */
+#projekty{     
+    display: flex; 
+    justify-content: center;     
+}
+
+/**** obrázky v galerii */
+.picture-gallery { 
+    display: flex;
+    justify-content: space-evenly;
+    /* gap: 20px; */
+} 
+
+.picture-gallery img { 
+    width: 30%;
+    height: 90%;
+    transition: transform 0.8s ease;
+    border-radius: 10%;
+} 
+
+.picture-gallery img:hover { 
+    transform: scale(1.1);
+}
+
+/*******************************************************/
+
+
+/***************************************************/
+
+/*druhá sekce */
+#about-me { 
+    display: flex; 
+    justify-content: space-evenly;
+}
+
+/* o mě div*/ 
+.my-description { 
+    display: flex;
+    flex-direction: column;
+    width: 50%;    
+    border: 2px solid var(--menu-color);
+    border-radius: 5px;
+    padding: 40px;
+    margin-bottom: 10px;
+    h2 { 
+        margin: 0 auto;        
+    }
+}
+
+/*paragraf o mě */
+.block-text { 
+    margin-top: 10px;
+    text-align: center; 
+    letter-spacing: 1px;
+    line-height: 1.5;
+} 
+
+/**** druhý div a hlavní v loginu*/
+.login-section { 
+    position: relative; 
+    background: var(--menu-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 25%;
+    height: 25%;
+    h2 {      
+        display: flex;
+        justify-content: center;   
+                
+    }  
+} 
+
+/*div pod loginem*/
+.fomular{ 
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    z-index: 1;  
+    
+}
+
+.inputs { 
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    p{ 
+        font-size: 1.2em;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;       
+        color: red;
+        letter-spacing: 1px;
+    }      
+}  
+ 
+/*inputy v divech*/
+.inputs input{ 
+    text-align: center; 
+    margin-top: 20px;
+    padding: 10px; 
+    border-radius: 5px;
+    letter-spacing: 1px; 
+    font-size: 1em; 
+} 
+
+/*Přihlásit tlačítko*/
+#Login{ 
+    font-weight: bold;
+    font-size: 1.8em;
+}
+/************************************
+*******************************************
+****************************************/
+
+/************ footer **************/ 
+
+footer { 
+    display: flex;
+    justify-content: space-evenly; 
+    background-color: var(--menu-color);
+
+} 
+/*footer text */
+.footer-p { 
+    margin-top: 10px;
+    margin-bottom: 5px; 
+    font-size: 1.0em; 
+    position: relative;
+    color: var(--darMode_text);
+    z-index: 2;
+} 
+
+.footer-p::before { 
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--podsviceni);
+    filter: blur(10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
