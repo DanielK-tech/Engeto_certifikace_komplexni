@@ -10,15 +10,14 @@
 :root {
   --dark_mode: #000;
   --darMode_text: #fff;
-  --menu_background: rgba(67, 67, 87, 0.7); 
+  --menu_background: rgba(67, 67, 87, 0.7);
+  --menu-text-color: rgb(255, 247, 247);
   /* menu*/
   --menu-color: rgba(0, 0, 0, 0.7);
   --border-color-menu: #dc4f00;
-  --podsviceni: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(255, 94, 247, 1) 17.8%,
-    rgba(2, 245, 255, 1) 100.2%
-  );
+  --podsviceni: radial-gradient(circle farthest-corner at 10% 20%,
+      rgba(255, 94, 247, 1) 17.8%,
+      rgba(2, 245, 255, 1) 100.2%);
   /*hamburger*/
   --hamburger: rgb(20, 20, 180);
 }
@@ -46,6 +45,7 @@ header {
   background-color: var(--dark_mode);
   color: var(--darMode_text);
 }
+
 /***********************************************/
 /***********************************************/
 
@@ -70,6 +70,7 @@ header {
 .welcoming-text {
   color: var(--darMode_text);
   padding: 5%;
+
   p {
     text-align: center;
     font-size: 1.8em;
@@ -91,6 +92,7 @@ header {
     display: none;
   }
 }
+
 .piece {
   margin-top: 5px;
   height: 10px;
@@ -106,12 +108,92 @@ header {
 #hamburger:active div:nth-child(2) {
   transform: translateX(10px) rotate(-45deg);
 }
+
 #hamburger:active div:last-child {
   transform: translateY(-15px) translateX(10px) rotate(-45deg);
 }
 
 #hamburger:active div {
   aspect-ratio: 3/1;
+}
+
+/**************************************************************************************
+***************************************************************************************/
+
+/*hamburger menu */
+
+/* div s menu */
+.mobile-nav-background {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  background: var(--menu-color);
+  z-index: 9999999999;
+}
+
+.mobile-nav-background ul {
+  list-style-type: none;
+}
+
+/** druhé menu odkazy */
+.second-menu a {
+  font-size: 1.8em;
+  color: var(--menu-text-color);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  position: relative;
+  font-family: serif;
+}
+
+/*pseudo třídy*/
+.second-menu a:hover,
+.second-menu a:active {
+  transition: border-bottom 2.5s;
+  border-bottom: 2px solid transparent;
+}
+
+.second-menu a:hover::after,
+.second-menu a:active::after {
+  width: 100%;
+}
+
+/**********************************/
+
+.second-menu a::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: var(--podsviceni);
+  filter: blur(10px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.second-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--border-color-menu);
+  /* barva podtržítka*/
+  transition: width 2.5s;
+  z-index: 1;
+}
+
+/**************************************************/
+
+/*křížek*/
+.Cross-red {
+  margin-left: 270%;
+  margin-bottom: 100%;
+  margin-top: 10%;
+  width: 30%;
 }
 
 /*******************************************************
@@ -132,11 +214,12 @@ header {
   height: 50px;
   width: 50px;
 }
+
 /***********/
 /*label k checkboxu*/
 #labelkaDark {
   margin-top: 4%;
-  color: #fff;
+  color: var(--menu-text-color);
   font-size: 29px;
   font-family: sans-serif;
 }
@@ -152,6 +235,7 @@ header {
   top: 0;
   z-index: -1;
 }
+
 /***********************************************************/
 /***********************************************************/
 /********** Menu ***/
@@ -162,9 +246,9 @@ header {
   background: var(--menu-color);
   z-index: 10;
 }
+
 /** položky v menu */
 nav ul {
-  /* float: right; */
   font-size: 29px;
   position: fixed;
   margin-top: 20px;
@@ -179,9 +263,9 @@ nav ul li {
 
 nav ul li a:link,
 nav ul li a:visited {
-  color: rgb(255, 247, 247);
-  text-decoration: none;
   font-size: 100%;
+  color: var(--menu-text-color);
+  text-decoration: none;
   border-bottom: 2px solid transparent;
   position: relative;
   font-family: serif;
@@ -200,10 +284,12 @@ nav ul li a::after {
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: var(--border-color-menu); /* barva podtržítka*/
+  background-color: var(--border-color-menu);
+  /* barva podtržítka*/
   transition: width 2.5s;
   z-index: 1;
 }
+
 nav ul li a:hover::after,
 nav ul li a:active::after {
   width: 100%;
@@ -241,6 +327,7 @@ nav ul li a::before {
     margin-bottom: 5px;
   }
 }
+
 /***********************************************************/
 /** sekce s fotkami */
 #projekty {
@@ -286,6 +373,7 @@ nav ul li a::before {
   border-radius: 5px;
   padding: 40px;
   margin-bottom: 10px;
+
   h2 {
     margin: 0 auto;
   }
@@ -319,6 +407,7 @@ nav ul li a::before {
   margin-bottom: 10px;
   width: 25%;
   height: 25%;
+
   h2 {
     display: flex;
     justify-content: center;
@@ -338,6 +427,7 @@ nav ul li a::before {
   display: flex;
   flex-direction: column;
   width: 100%;
+
   p {
     font-size: 1.2em;
     text-align: center;
@@ -363,6 +453,7 @@ nav ul li a::before {
   font-weight: bold;
   font-size: 1.8em;
 }
+
 /************************************
 *******************************************
 ****************************************/
@@ -386,32 +477,35 @@ nav ul li a::before {
 #arrow-UP:hover {
   cursor: pointer;
   transform: scale(1.9);
-} 
-/*******************************************************/ 
+}
+
+/*******************************************************/
 
 /*Sekce kotakt*/
-.contact{ 
- 
+.contact {
+
   line-height: 1.5;
-  background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(./img/img_4.jpg);
-  h2 { 
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(./img/img_4.jpg);
+
+  h2 {
     margin-left: 10%;
     font-size: 1.8em;
-  } 
+  }
+
   color: var(--darMode_text);
-} 
+}
 
-.contact ul { 
+.contact ul {
   list-style-type: none;
-  margin-left: 10%; 
+  margin-left: 10%;
   font-size: 1.8em;
-  
-} 
 
-.contact ul li a { 
+}
+
+.contact ul li a {
   text-decoration: none;
-  color: var(--darMode_text); 
-  
+  color: var(--darMode_text);
+
 }
 
 
@@ -423,6 +517,7 @@ footer {
   justify-content: space-evenly;
   background-color: var(--menu-color);
 }
+
 /*footer text */
 .footer-p {
   margin-top: 10px;

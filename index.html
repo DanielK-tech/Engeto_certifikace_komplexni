@@ -12,23 +12,35 @@
   </head>
   <body>
     <header>
-      <div class="pozadi-navigace"><!--pozadí navigace--></div>
+      <div id="navigation-one" class="pozadi-navigace"><!--pozadí navigace--></div>
       <nav id="Menu">
         <ul>
           <li><a href="#" class="tvorba">Moje tvorba</a></li>
           <li><a href="#" class="o-me">O mě</a></li>
           <li><a href="#" class="Kontact">Kontakt</a></li>
-        </ul>
+        </ul> 
+        
+
       </nav>
       <div id="mode">
         <input id="Dark" type="checkbox" />
         <label id="labelkaDark" for="Dark">Dark Mode</label>
-      </div>
-
+      </div> 
+      
+      <!--hamburger-->
       <div id="hamburger">
         <div class="piece"></div>
         <div class="piece"></div>
         <div class="piece"></div>
+      </div> 
+      <!--vyjížděcí menu-->
+      <div id="second-nav-menu" class="mobile-nav-background"> 
+        <a class="mobile-nav-icon" href="#"><img id="Red-Cross" class="Cross-red" src="./img/cross.png" alt="Křížek"></a>
+        <ul class="second-menu"> 
+          <li><a href="#" class="tvorba">Moje tvorba</a></li>
+          <li><a href="#" class="o-me">O mě</a></li>
+          <li><a href="#" class="Kontact">Kontakt</a></li>
+        </ul>
       </div>
       <!--Konec Menu-->
       <h1 class="main">Vítejte na mém webu</h1>

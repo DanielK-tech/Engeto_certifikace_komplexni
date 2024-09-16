@@ -6,14 +6,19 @@ const LoginFormular = document.querySelector('.login-section') as HTMLDivElement
 const InvalidTryText = document.querySelector('.invalid') as HTMLParagraphElement; //invalid paragraf
 const Header = document.querySelector('header') as HTMLElement //header
 const Arrow = document.getElementById('arrow-UP') as HTMLImageElement
+const Hamburger = document.getElementById('hamburger') as HTMLDivElement; //hamburger menu
 //Položky ve stránce
 const Photos = document.getElementById('projekty') as HTMLElement; //sekce fotky
 const AboutMe = document.getElementById('about-me') as HTMLElement; //sekce o mě
 const Contact = document.getElementById('My-info') as HTMLDivElement;
 //odkazy v menu (odkazuji na položky na stránce)
-const MojeTvorba = document.querySelector('.tvorba') as HTMLAnchorElement;
-const Ome = document.querySelector('.o-me') as HTMLAnchorElement;
-const Kontakt = document.querySelector('.Kontact') as HTMLAnchorElement;
+const MojeTvorba = document.querySelectorAll('.tvorba') as NodeListOf<HTMLAnchorElement>;
+const Ome = document.querySelectorAll('.o-me') as NodeListOf<HTMLAnchorElement>;
+const Kontakt = document.querySelectorAll('.Kontact') as NodeListOf<HTMLAnchorElement>;
+//vyjížděcí menu 
+const SecondMenu = document.getElementById('second-nav-menu') as HTMLDivElement;
+const CrossRed = document.getElementById('Red-Cross') as HTMLAnchorElement;
+const DarkBoxMode = document.getElementById('mode') as HTMLDivElement;
 //formulář na hesla
 const PasswordInput = document.getElementById('password1') as HTMLInputElement;
 const PasswordCheck = document.getElementById('password2') as HTMLInputElement;
@@ -30,15 +35,25 @@ const ContactBackground = getComputedStyle(Contact).getPropertyValue('background
 const originalBackgroundColor = getComputedStyle(menuBackgroud).background;
 /************************************************************************************************************* */
 
-
-
-if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow) {
+/** akce na klikání **/
+if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburger && CrossRed) {
   DarkMode.addEventListener("change", bodyClick);
-  MojeTvorba.addEventListener('click', GalerryClick);
-  Ome.addEventListener('click', OmeClick);
-  Kontakt.addEventListener('click', KontaktClick);
+
+  //posluchače na více elementu se stejnou třídou
+  Array.from(MojeTvorba).forEach((element: HTMLAnchorElement) => {
+    element.addEventListener('click', GalerryClick);
+  });
+  Array.from(Ome).forEach((element: HTMLAnchorElement) => {
+    element.addEventListener('click', OmeClick);
+  });
+  Array.from(Kontakt).forEach((element: HTMLAnchorElement) => {
+    element.addEventListener('click', KontaktClick);
+  });
+  //
   LoginButton.addEventListener('click', PassChecking);
   Arrow.addEventListener('click', ArrowUp);
+  Hamburger.addEventListener('click', HamburgerClick);
+  CrossRed.addEventListener('click', CrossClick);
 }
 
 window.addEventListener('scroll', ScrollingDown);
@@ -79,7 +94,7 @@ function PassChecking(event: any) {
 }
 /****************************************** */
 
-/** funkce na scrolování **/
+/** funkce na scrolování (šipka se objeví/zmizí) **/
 function ScrollingDown() {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
     Arrow.style.display = 'block';
@@ -87,7 +102,7 @@ function ScrollingDown() {
     Arrow.style.display = 'none';
   }
 }
-
+// funkce na po kliknutí na šipku
 function ArrowUp() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   Arrow.style.display = 'none';
@@ -139,6 +154,27 @@ function KontaktClick(e: any) {
       behavior: 'smooth'
     });
   }
+}
+
+/**************************************************************** */
+
+/** funkce na vyjížděcí menu a křížek **/
+
+function HamburgerClick() {
+  SecondMenu.style.display = 'flex';
+  DarkBoxMode.style.display = 'none';
+  Hamburger.style.display = 'none';
+  menuBackgroud.style.display = 'none';
+}
+
+//křížek 
+function CrossClick(e: any) {
+  e.preventDefault();
+  SecondMenu.style.display = 'none';
+  DarkBoxMode.style.display = 'flex';
+  Hamburger.style.display = 'block'; 
+  menuBackgroud.style.display = 'block';
+
 }
 
 

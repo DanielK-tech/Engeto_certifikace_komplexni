@@ -7,12 +7,16 @@ const LoginFormular = document.querySelector('.login-section');
 const InvalidTryText = document.querySelector('.invalid');
 const Header = document.querySelector('header');
 const Arrow = document.getElementById('arrow-UP');
+const Hamburger = document.getElementById('hamburger');
 const Photos = document.getElementById('projekty');
 const AboutMe = document.getElementById('about-me');
 const Contact = document.getElementById('My-info');
-const MojeTvorba = document.querySelector('.tvorba');
-const Ome = document.querySelector('.o-me');
-const Kontakt = document.querySelector('.Kontact');
+const MojeTvorba = document.querySelectorAll('.tvorba');
+const Ome = document.querySelectorAll('.o-me');
+const Kontakt = document.querySelectorAll('.Kontact');
+const SecondMenu = document.getElementById('second-nav-menu');
+const CrossRed = document.getElementById('Red-Cross');
+const DarkBoxMode = document.getElementById('mode');
 const PasswordInput = document.getElementById('password1');
 const PasswordCheck = document.getElementById('password2');
 const LoginButton = document.getElementById('Login');
@@ -21,13 +25,21 @@ const darkModeColor = getComputedStyle(root).getPropertyValue('--menu_background
 const headerOriginal = getComputedStyle(Header).getPropertyValue('background');
 const ContactBackground = getComputedStyle(Contact).getPropertyValue('background');
 const originalBackgroundColor = getComputedStyle(menuBackgroud).background;
-if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow) {
+if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburger && CrossRed) {
     DarkMode.addEventListener("change", bodyClick);
-    MojeTvorba.addEventListener('click', GalerryClick);
-    Ome.addEventListener('click', OmeClick);
-    Kontakt.addEventListener('click', KontaktClick);
+    Array.from(MojeTvorba).forEach((element) => {
+        element.addEventListener('click', GalerryClick);
+    });
+    Array.from(Ome).forEach((element) => {
+        element.addEventListener('click', OmeClick);
+    });
+    Array.from(Kontakt).forEach((element) => {
+        element.addEventListener('click', KontaktClick);
+    });
     LoginButton.addEventListener('click', PassChecking);
     Arrow.addEventListener('click', ArrowUp);
+    Hamburger.addEventListener('click', HamburgerClick);
+    CrossRed.addEventListener('click', CrossClick);
 }
 window.addEventListener('scroll', ScrollingDown);
 function bodyClick() {
@@ -103,4 +115,17 @@ function KontaktClick(e) {
             behavior: 'smooth'
         });
     }
+}
+function HamburgerClick() {
+    SecondMenu.style.display = 'flex';
+    DarkBoxMode.style.display = 'none';
+    Hamburger.style.display = 'none';
+    menuBackgroud.style.display = 'none';
+}
+function CrossClick(e) {
+    e.preventDefault();
+    SecondMenu.style.display = 'none';
+    DarkBoxMode.style.display = 'flex';
+    Hamburger.style.display = 'block';
+    menuBackgroud.style.display = 'block';
 }
