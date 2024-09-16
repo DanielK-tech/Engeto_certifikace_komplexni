@@ -56,5 +56,9 @@
 
   .picture-gallery img {
     height: 350px;
+  } 
+
+  .contact ul{ 
+    font-size: 1.4em;
   }
 }

@@ -10,7 +10,7 @@
 :root {
   --dark_mode: #000;
   --darMode_text: #fff;
-  --menu_background: rgba(67, 67, 87, 0.7);
+  --menu_background: rgba(67, 67, 87, 0.7); 
   /* menu*/
   --menu-color: rgba(0, 0, 0, 0.7);
   --border-color-menu: #dc4f00;
@@ -386,7 +386,35 @@ nav ul li a::before {
 #arrow-UP:hover {
   cursor: pointer;
   transform: scale(1.9);
+} 
+/*******************************************************/ 
+
+/*Sekce kotakt*/
+.contact{ 
+ 
+  line-height: 1.5;
+  background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(./img/img_4.jpg);
+  h2 { 
+    margin-left: 10%;
+    font-size: 1.8em;
+  } 
+  color: var(--darMode_text);
+} 
+
+.contact ul { 
+  list-style-type: none;
+  margin-left: 10%; 
+  font-size: 1.8em;
+  
+} 
+
+.contact ul li a { 
+  text-decoration: none;
+  color: var(--darMode_text); 
+  
 }
+
+
 
 /************ footer **************/
 
