@@ -12,6 +12,8 @@
   --darMode_text: #fff;
   --menu_background: rgba(67, 67, 87, 0.7);
   --menu-text-color: rgb(255, 247, 247);
+  --background-gradient:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5));
+  --warning-color:red;
   /* menu*/
   --menu-color: rgba(0, 0, 0, 0.7);
   --border-color-menu: #dc4f00;
@@ -37,7 +39,7 @@ body {
 }
 
 header {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+  background: var(--background-gradient),
     url(./img/img_4.jpg);
 }
 
@@ -81,14 +83,14 @@ header {
 /************************************************************/
 
 /*hamburger */
-#hamburger {
+.Hamburger {
   margin-left: 65%;
   position: fixed;
   z-index: 51;
 }
 
 @media (min-width: 610px) {
-  #hamburger {
+  .Hamburger  {
     display: none;
   }
 }
@@ -101,19 +103,19 @@ header {
   background-color: var(--hamburger);
 }
 
-#hamburger:active div:first-child {
+.Hamburger:active div:first-child {
   transform: translateY(15px) translateX(-5px) rotate(45deg);
 }
 
-#hamburger:active div:nth-child(2) {
+.Hamburger:active div:nth-child(2) {
   transform: translateX(10px) rotate(-45deg);
 }
 
-#hamburger:active div:last-child {
+.Hamburger:active div:last-child {
   transform: translateY(-15px) translateX(10px) rotate(-45deg);
 }
 
-#hamburger:active div {
+.Hamburger:active div {
   aspect-ratio: 3/1;
 }
 
@@ -200,7 +202,7 @@ header {
 *******************************************************/
 
 /**** dark mode */
-#mode {
+.Darkmode-div {
   position: fixed;
   display: flex;
   margin-top: 10px;
@@ -209,7 +211,7 @@ header {
 }
 
 /* checkbox **/
-#Dark {
+.Darkmode-input {
   margin-right: 5px;
   height: 50px;
   width: 50px;
@@ -217,14 +219,14 @@ header {
 
 /***********/
 /*label k checkboxu*/
-#labelkaDark {
+.Darkmode-label {
   margin-top: 4%;
   color: var(--menu-text-color);
   font-size: 29px;
   font-family: sans-serif;
 }
 
-#labelkaDark::before {
+.Darkmode-label::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -284,8 +286,7 @@ nav ul li a::after {
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: var(--border-color-menu);
-  /* barva podtržítka*/
+  background-color: var(--border-color-menu);  
   transition: width 2.5s;
   z-index: 1;
 }
@@ -296,7 +297,6 @@ nav ul li a:active::after {
 }
 
 /* Gradientní pozadí za textem */
-
 nav ul li a::before {
   content: "";
   width: 100%;
@@ -310,11 +310,9 @@ nav ul li a::before {
 }
 
 /*****************************************************/
-
 /*******************************************/
 
-/*první sekce */
-
+/*první sekce (obalující div) */
 .section {
   margin-top: 100px;
 
@@ -330,7 +328,7 @@ nav ul li a::before {
 
 /***********************************************************/
 /** sekce s fotkami */
-#projekty {
+.section-one {
   display: flex;
   justify-content: center;
 }
@@ -338,8 +336,7 @@ nav ul li a::before {
 /**** obrázky v galerii */
 .picture-gallery {
   display: flex;
-  justify-content: space-evenly;
-  /* gap: 20px; */
+  justify-content: space-evenly;  
 }
 
 .picture-gallery img {
@@ -358,7 +355,7 @@ nav ul li a::before {
 /***************************************************/
 
 /*druhá sekce */
-#about-me {
+.section-two {
   display: flex;
   justify-content: space-evenly;
 }
@@ -415,8 +412,7 @@ nav ul li a::before {
 }
 
 /*div pod loginem*/
-.fomular {
-  /* position: absolute; */
+.fomular {  
   width: 100%;
   height: 100%;
   padding: 40px;
@@ -433,7 +429,7 @@ nav ul li a::before {
     text-align: center;
     font-weight: bold;
     margin-top: 20px;
-    color: red;
+    color: var(--warning-color);
     letter-spacing: 1px;
   }
 }
@@ -467,14 +463,14 @@ nav ul li a::before {
   top: 90%;
 }
 
-#arrow-UP {
+.arrow-up-img {
   /* position: fixed; */
   width: 2%;
   transition: transform 1.8s ease;
   display: none;
 }
 
-#arrow-UP:hover {
+.arrow-up-img:hover {
   cursor: pointer;
   transform: scale(1.9);
 }
@@ -485,7 +481,7 @@ nav ul li a::before {
 .contact {
 
   line-height: 1.5;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(./img/img_4.jpg);
+  background: var(--background-gradient), url(./img/img_4.jpg);
 
   h2 {
     margin-left: 10%;
@@ -526,6 +522,11 @@ footer {
   position: relative;
   color: var(--darMode_text);
   z-index: 2;
+} 
+
+.facebook-anchor:hover{ 
+  cursor: pointer; 
+  
 }
 
 .footer-p::before {

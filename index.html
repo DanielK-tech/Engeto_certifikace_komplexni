@@ -22,13 +22,13 @@
         
 
       </nav>
-      <div id="mode">
-        <input id="Dark" type="checkbox" />
-        <label id="labelkaDark" for="Dark">Dark Mode</label>
+      <div id="mode" class="Darkmode-div">
+        <input id="Dark" class="Darkmode-input" type="checkbox" />
+        <label id="labelkaDark" class="Darkmode-label" for="Dark">Dark Mode</label>
       </div> 
       
       <!--hamburger-->
-      <div id="hamburger">
+      <div id="hamburger" class="Hamburger">
         <div class="piece"></div>
         <div class="piece"></div>
         <div class="piece"></div>
@@ -65,7 +65,7 @@
     <main>
       <div class="section">
         <h2>Ukázka mé umělecké práce</h2>
-        <section id="projekty">
+        <section id="projekty" class="section-one">
           <div class="picture-gallery">
             <img src="./img/mountain-4242391_1280.jpg" alt="Hory a údolí" />
             <img src="./img/obr2.jpg" alt="opuštěná budova" />
@@ -73,7 +73,7 @@
           </div>
         </section>
       </div>
-      <section id="about-me">
+      <section id="about-me" class="section-two">
         <div class="my-description">
           <h2>O mě</h2>
           <p class="block-text">
@@ -100,7 +100,7 @@
           </p>
         </div>
 
-        <div class="login-section">
+        <div id="Formular-div" class="login-section">
           <div class="fomular">
             <h2>Přihlásit se</h2>
             <form class="login-format" action="">
@@ -128,8 +128,8 @@
               </div>
               <!--Tlačítko-->
               <div class="inputs">
-                <input type="submit" id="Login" value="Přihlásit" />
-                <p class="invalid none">Vaše hesla se neshodují !</p>
+                <input type="submit" class="Log-in" id="Login"  value="Přihlásit" />
+                <p id="Check-pass" class="invalid none">Vaše hesla se neshodují !</p>
               </div>
             </form>
           </div>
@@ -138,7 +138,7 @@
     </main>
     <!--šipka nahorů-->
     <div class="arrow-up">
-      <img id="arrow-UP" src="./img/img_AA.png" alt="šipka nahorů" />
+      <img id="arrow-UP" class="arrow-up-img" src="./img/img_AA.png" alt="šipka nahorů" />
     </div>
     <!--Kontakt-->
     <div id="My-info" class="contact"> 
@@ -146,7 +146,7 @@
       <ul> 
         <li><b>Tel:</b> +420 789 452 265</li>
         <li><b>email:</b> dancek.kolegar@gmail.com</li>
-        <li><b>Facebook:</b><a href="#"> Facebook</a></li>
+        <li><b>Facebook:</b><a class="facebook-anchor" href="#"> Facebook</a></li>
       </ul>
     </div>
     <!--patička-->

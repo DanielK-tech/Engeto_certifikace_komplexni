@@ -1,10 +1,10 @@
-const DarkMode = document.getElementById("Dark") as HTMLInputElement; /** check box **/
 const BodyInPage = document.querySelector("body") as HTMLElement; //body 
-const menuBackgroud = document.querySelector('.pozadi-navigace') as HTMLDivElement; //pozadí menu
-const footerInPage = document.querySelector('footer') as HTMLElement;
-const LoginFormular = document.querySelector('.login-section') as HTMLDivElement;
-const InvalidTryText = document.querySelector('.invalid') as HTMLParagraphElement; //invalid paragraf
 const Header = document.querySelector('header') as HTMLElement //header
+const footerInPage = document.querySelector('footer') as HTMLElement;
+const DarkMode = document.getElementById("Dark") as HTMLInputElement; /** check box **/
+const menuBackgroud = document.getElementById('navigation-one') as HTMLDivElement; //pozadí menu
+const LoginFormular = document.getElementById('Formular-div') as HTMLDivElement;
+const InvalidTryText = document.getElementById('Check-pass') as HTMLParagraphElement; //invalid paragraf
 const Arrow = document.getElementById('arrow-UP') as HTMLImageElement
 const Hamburger = document.getElementById('hamburger') as HTMLDivElement; //hamburger menu
 //Položky ve stránce
@@ -160,21 +160,25 @@ function KontaktClick(e: any) {
 
 /** funkce na vyjížděcí menu a křížek **/
 
+//hamburger
 function HamburgerClick() {
   SecondMenu.style.display = 'flex';
   DarkBoxMode.style.display = 'none';
   Hamburger.style.display = 'none';
   menuBackgroud.style.display = 'none';
-}
-
+  
+} 
 //křížek 
 function CrossClick(e: any) {
-  e.preventDefault();
+  // e.preventDefault();  
   SecondMenu.style.display = 'none';
   DarkBoxMode.style.display = 'flex';
   Hamburger.style.display = 'block'; 
-  menuBackgroud.style.display = 'block';
+  menuBackgroud.style.display = 'block'; 
+  
 
-}
+} 
+
+
 
 
