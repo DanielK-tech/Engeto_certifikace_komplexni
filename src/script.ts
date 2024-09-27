@@ -6,7 +6,7 @@ const menuBackgroud = document.getElementById('navigation-one') as HTMLDivElemen
 const LoginFormular = document.getElementById('Formular-div') as HTMLDivElement;
 const InvalidTryText = document.getElementById('Check-pass') as HTMLParagraphElement; //invalid paragraf
 const Arrow = document.getElementById('arrow-UP') as HTMLImageElement
-const Hamburger = document.getElementById('hamburger') as HTMLDivElement; //hamburger menu
+const Hamburger = document.getElementById('Hamburger') as HTMLDivElement; //hamburger menu
 //Položky ve stránce
 const Photos = document.getElementById('projekty') as HTMLElement; //sekce fotky
 const AboutMe = document.getElementById('about-me') as HTMLElement; //sekce o mě
@@ -14,7 +14,7 @@ const Contact = document.getElementById('My-info') as HTMLDivElement;
 //odkazy v menu (odkazuji na položky na stránce)
 const MojeTvorba = document.querySelectorAll('.tvorba') as NodeListOf<HTMLAnchorElement>;
 const Ome = document.querySelectorAll('.o-me') as NodeListOf<HTMLAnchorElement>;
-const Kontakt = document.querySelectorAll('.Kontact') as NodeListOf<HTMLAnchorElement>;
+const Kontakt = document.querySelectorAll('.kontact') as NodeListOf<HTMLAnchorElement>;
 //vyjížděcí menu 
 const SecondMenu = document.getElementById('second-nav-menu') as HTMLDivElement;
 const CrossRed = document.getElementById('Red-Cross') as HTMLAnchorElement;

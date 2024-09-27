@@ -1,19 +1,19 @@
 "use strict";
-const DarkMode = document.getElementById("Dark");
 const BodyInPage = document.querySelector("body");
-const menuBackgroud = document.querySelector('.pozadi-navigace');
-const footerInPage = document.querySelector('footer');
-const LoginFormular = document.querySelector('.login-section');
-const InvalidTryText = document.querySelector('.invalid');
 const Header = document.querySelector('header');
+const footerInPage = document.querySelector('footer');
+const DarkMode = document.getElementById("Dark");
+const menuBackgroud = document.getElementById('navigation-one');
+const LoginFormular = document.getElementById('Formular-div');
+const InvalidTryText = document.getElementById('Check-pass');
 const Arrow = document.getElementById('arrow-UP');
-const Hamburger = document.getElementById('hamburger');
+const Hamburger = document.getElementById('Hamburger');
 const Photos = document.getElementById('projekty');
 const AboutMe = document.getElementById('about-me');
 const Contact = document.getElementById('My-info');
 const MojeTvorba = document.querySelectorAll('.tvorba');
 const Ome = document.querySelectorAll('.o-me');
-const Kontakt = document.querySelectorAll('.Kontact');
+const Kontakt = document.querySelectorAll('.kontact');
 const SecondMenu = document.getElementById('second-nav-menu');
 const CrossRed = document.getElementById('Red-Cross');
 const DarkBoxMode = document.getElementById('mode');
@@ -123,7 +123,6 @@ function HamburgerClick() {
     menuBackgroud.style.display = 'none';
 }
 function CrossClick(e) {
-    e.preventDefault();
     SecondMenu.style.display = 'none';
     DarkBoxMode.style.display = 'flex';
     Hamburger.style.display = 'block';
