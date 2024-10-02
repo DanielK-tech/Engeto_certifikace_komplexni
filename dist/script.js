@@ -25,6 +25,93 @@ const darkModeColor = getComputedStyle(root).getPropertyValue('--menu_background
 const headerOriginal = getComputedStyle(Header).getPropertyValue('background');
 const ContactBackground = getComputedStyle(Contact).getPropertyValue('background');
 const originalBackgroundColor = getComputedStyle(menuBackgroud).background;
+const bodyClick = () => {
+    if (DarkMode.checked) {
+        BodyInPage.classList.add("dark-mode");
+        Header.style.background = 'transparent';
+        menuBackgroud.style.background = darkModeColor;
+        LoginFormular.style.background = darkModeColor;
+        Contact.style.background = 'transparent';
+        footerInPage.style.background = darkModeColor;
+    }
+    else {
+        BodyInPage.classList.remove('dark-mode');
+        Header.style.background = headerOriginal;
+        menuBackgroud.style.background = originalBackgroundColor;
+        LoginFormular.style.background = originalBackgroundColor;
+        Contact.style.background = ContactBackground;
+        footerInPage.style.background = originalBackgroundColor;
+    }
+};
+const PassChecking = (event) => {
+    event.preventDefault();
+    const password1 = PasswordInput.value;
+    const password2 = PasswordCheck.value;
+    if (password1 !== password2) {
+        InvalidTryText.classList.remove('none');
+    }
+    else {
+        InvalidTryText.classList.add('none');
+    }
+};
+const ScrollingDown = () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        Arrow.style.display = 'block';
+    }
+    else {
+        Arrow.style.display = 'none';
+    }
+};
+const ArrowUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    Arrow.style.display = 'none';
+};
+const GalerryClick = (e) => {
+    e.preventDefault();
+    if (Photos) {
+        const offset = window.innerHeight * 0.15;
+        const targetPosition = Photos.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+const OmeClick = (e) => {
+    e.preventDefault();
+    if (AboutMe) {
+        const offset = window.innerHeight * 0.15;
+        const targetPosition = AboutMe.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+const KontaktClick = (e) => {
+    e.preventDefault();
+    if (Contact) {
+        const offset = window.innerHeight * 0.15;
+        const targetPosition = Contact.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+const HamburgerClick = () => {
+    SecondMenu.style.display = 'flex';
+    DarkBoxMode.style.display = 'none';
+    Hamburger.style.display = 'none';
+    menuBackgroud.style.display = 'none';
+};
+const CrossClick = (e) => {
+    e.preventDefault();
+    SecondMenu.style.display = 'none';
+    DarkBoxMode.style.display = 'flex';
+    Hamburger.style.display = 'block';
+    menuBackgroud.style.display = 'block';
+};
 if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburger && CrossRed) {
     DarkMode.addEventListener("change", bodyClick);
     Array.from(MojeTvorba).forEach((element) => {
@@ -42,89 +129,3 @@ if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburge
     CrossRed.addEventListener('click', CrossClick);
 }
 window.addEventListener('scroll', ScrollingDown);
-function bodyClick() {
-    if (DarkMode.checked) {
-        BodyInPage.classList.add("dark-mode");
-        Header.style.background = 'transparent';
-        menuBackgroud.style.background = darkModeColor;
-        LoginFormular.style.background = darkModeColor;
-        Contact.style.background = 'transparent';
-        footerInPage.style.background = darkModeColor;
-    }
-    else {
-        BodyInPage.classList.remove('dark-mode');
-        Header.style.background = headerOriginal;
-        menuBackgroud.style.background = originalBackgroundColor;
-        LoginFormular.style.background = originalBackgroundColor;
-        Contact.style.background = ContactBackground;
-        footerInPage.style.background = originalBackgroundColor;
-    }
-}
-function PassChecking(event) {
-    event.preventDefault();
-    const password1 = PasswordInput.value;
-    const password2 = PasswordCheck.value;
-    if (password1 !== password2) {
-        InvalidTryText.classList.remove('none');
-    }
-    else {
-        InvalidTryText.classList.add('none');
-    }
-}
-function ScrollingDown() {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        Arrow.style.display = 'block';
-    }
-    else {
-        Arrow.style.display = 'none';
-    }
-}
-function ArrowUp() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    Arrow.style.display = 'none';
-}
-function GalerryClick(e) {
-    e.preventDefault();
-    if (Photos) {
-        const offset = window.innerHeight * 0.15;
-        const targetPosition = Photos.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-}
-function OmeClick(e) {
-    e.preventDefault();
-    if (AboutMe) {
-        const offset = window.innerHeight * 0.15;
-        const targetPosition = AboutMe.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-}
-function KontaktClick(e) {
-    e.preventDefault();
-    if (Contact) {
-        const offset = window.innerHeight * 0.15;
-        const targetPosition = Contact.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-}
-function HamburgerClick() {
-    SecondMenu.style.display = 'flex';
-    DarkBoxMode.style.display = 'none';
-    Hamburger.style.display = 'none';
-    menuBackgroud.style.display = 'none';
-}
-function CrossClick(e) {
-    SecondMenu.style.display = 'none';
-    DarkBoxMode.style.display = 'flex';
-    Hamburger.style.display = 'block';
-    menuBackgroud.style.display = 'block';
-}

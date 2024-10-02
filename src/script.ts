@@ -28,17 +28,129 @@ const LoginButton = document.getElementById('Login') as HTMLInputElement;
 
 /** vytahnutí proměných z css */
 const root = document.documentElement;
-const darkModeColor = getComputedStyle(root).getPropertyValue('--menu_background'); //vytáhnutí konkrítní barvy
+const darkModeColor = getComputedStyle(root).getPropertyValue('--menu_background'); //vytáhnutí konkrétní barvy
 const headerOriginal = getComputedStyle(Header).getPropertyValue('background'); //background headeru
 const ContactBackground = getComputedStyle(Contact).getPropertyValue('background'); //background u Kontakt
 /**uložení původní barvy v menu */
 const originalBackgroundColor = getComputedStyle(menuBackgroud).background;
-/************************************************************************************************************* */
+/*************************************************************************************************************  
+ * *************************************** FUNKCE ************************************************************
+*************************************************************************************************************/
 
-/** akce na klikání **/
+/** funkce pro dark mode */
+const bodyClick = (): void => {
+  if (DarkMode.checked) {
+    BodyInPage.classList.add("dark-mode");
+    Header.style.background = 'transparent';
+    menuBackgroud.style.background = darkModeColor;
+    LoginFormular.style.background = darkModeColor;
+    Contact.style.background = 'transparent';
+    footerInPage.style.background = darkModeColor;
+  } else {
+    BodyInPage.classList.remove('dark-mode');
+    Header.style.background = headerOriginal;
+    menuBackgroud.style.background = originalBackgroundColor;
+    LoginFormular.style.background = originalBackgroundColor;
+    Contact.style.background = ContactBackground;
+    footerInPage.style.background = originalBackgroundColor;
+  }
+}
+/************************************************************** */
+/** funkce pro kontrolu hesel  **/
+
+const PassChecking = (event: any): void => {
+  event.preventDefault();
+  const password1 = PasswordInput.value;
+  const password2 = PasswordCheck.value;
+
+  if (password1 !== password2) {
+    InvalidTryText.classList.remove('none');
+  } else {
+    InvalidTryText.classList.add('none');
+  }
+}
+/************************************************************************ */
+/** funkce na scrolování (šipka se objeví/zmizí) **/
+const ScrollingDown = (): void => {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    Arrow.style.display = 'block';
+  } else {
+    Arrow.style.display = 'none';
+  }
+}
+
+const ArrowUp = (): void => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  Arrow.style.display = 'none';
+}
+/*********************************************************************** */
+/** funkce na přesun v menu **/
+
+const GalerryClick = (e: any): void => {
+  e.preventDefault();
+  if (Photos) {
+    // 15% nad element
+    const offset = window.innerHeight * 0.15;
+    //pozice elementu - 15%
+    const targetPosition = Photos.getBoundingClientRect().top + window.scrollY - offset;
+    //scrolování na pozici nad element
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+/** funkce na přesun (o Mě) **/
+const OmeClick = (e: any): void => {
+  e.preventDefault();
+  if (AboutMe) {
+    const offset = window.innerHeight * 0.15;
+    const targetPosition = AboutMe.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+/**Funkce na přesun (Kontakt) **/
+const KontaktClick = (e: any): void => {
+  e.preventDefault();
+  if (Contact) {
+    const offset = window.innerHeight * 0.15;
+    const targetPosition = Contact.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+/**************************************************************** */
+/** funkce na vyjížděcí menu a křížek **/
+
+//hamburger
+const HamburgerClick = (): void => {
+  SecondMenu.style.display = 'flex';
+  DarkBoxMode.style.display = 'none';
+  Hamburger.style.display = 'none';
+  menuBackgroud.style.display = 'none';
+
+}
+/** fce na křížek v hamburgeru **/
+const CrossClick = (e: any): void => {
+  e.preventDefault();
+  SecondMenu.style.display = 'none';
+  DarkBoxMode.style.display = 'flex';
+  Hamburger.style.display = 'block';
+  menuBackgroud.style.display = 'block';
+};
+/***********************************************************************
+ * ********************* AKCE KLIKÁNÍ **********************************
+ ***********************************************************************/
+
+/** akce **/
 if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburger && CrossRed) {
+  
   DarkMode.addEventListener("change", bodyClick);
-
   //posluchače na více elementu se stejnou třídou
   Array.from(MojeTvorba).forEach((element: HTMLAnchorElement) => {
     element.addEventListener('click', GalerryClick);
@@ -58,126 +170,6 @@ if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburge
 
 window.addEventListener('scroll', ScrollingDown);
 
-/** funkce pro dark mode */
-
-function bodyClick() {
-  if (DarkMode.checked) {
-    BodyInPage.classList.add("dark-mode");
-    Header.style.background = 'transparent';
-    menuBackgroud.style.background = darkModeColor;
-    LoginFormular.style.background = darkModeColor;
-    Contact.style.background = 'transparent';
-    footerInPage.style.background = darkModeColor;
-  } else {
-    BodyInPage.classList.remove('dark-mode');
-    Header.style.background = headerOriginal;
-    menuBackgroud.style.background = originalBackgroundColor;
-    LoginFormular.style.background = originalBackgroundColor;
-    Contact.style.background = ContactBackground;
-    footerInPage.style.background = originalBackgroundColor;
-  }
-}
-/************************************************************** */
-
-/** funkce pro kontrolu hesel  **/
-
-function PassChecking(event: any) {
-  event.preventDefault();
-  const password1 = PasswordInput.value;
-  const password2 = PasswordCheck.value;
-
-  if (password1 !== password2) {
-    InvalidTryText.classList.remove('none');
-  } else {
-    InvalidTryText.classList.add('none');
-  }
-}
-/****************************************** */
-
-/** funkce na scrolování (šipka se objeví/zmizí) **/
-function ScrollingDown() {
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    Arrow.style.display = 'block';
-  } else {
-    Arrow.style.display = 'none';
-  }
-}
-// funkce na po kliknutí na šipku
-function ArrowUp() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  Arrow.style.display = 'none';
-}
-
-/************************************************* */
-
-/** funkce na přesun v menu **/
-
-function GalerryClick(e: any) {
-  e.preventDefault();
-  if (Photos) {
-    // 15% nad element
-    const offset = window.innerHeight * 0.15;
-    //pozice elementu - 15%
-    const targetPosition = Photos.getBoundingClientRect().top + window.scrollY - offset;
-    //scrolování na pozici nad element
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-  }
-}
-/**************************************************** */
-
-/** funkce na přesun (o Mě) **/
-function OmeClick(e: any) {
-  e.preventDefault();
-  if (AboutMe) {
-    const offset = window.innerHeight * 0.15;
-    const targetPosition = AboutMe.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-  }
-}
-
-/******************************************************* */
-
-/**Funkce na přesun (Kontakt) **/
-function KontaktClick(e: any) {
-  e.preventDefault();
-  if (Contact) {
-    const offset = window.innerHeight * 0.15;
-    const targetPosition = Contact.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-  }
-}
-
-/**************************************************************** */
-
-/** funkce na vyjížděcí menu a křížek **/
-
-//hamburger
-function HamburgerClick() {
-  SecondMenu.style.display = 'flex';
-  DarkBoxMode.style.display = 'none';
-  Hamburger.style.display = 'none';
-  menuBackgroud.style.display = 'none';
-  
-} 
-//křížek 
-function CrossClick(e: any) {
-  // e.preventDefault();  
-  SecondMenu.style.display = 'none';
-  DarkBoxMode.style.display = 'flex';
-  Hamburger.style.display = 'block'; 
-  menuBackgroud.style.display = 'block'; 
-  
-
-} 
 
 
 
