@@ -39,7 +39,8 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; 
+  max-width: 1920px;
   font-family: Roboto, sans-serif;
   transition: background-color 0.5s, color 0.5s;
 }
@@ -254,7 +255,8 @@ header {
 /********** Menu ***/
 .pozadi-navigace {
   position: fixed;
-  width: 100%;
+  width: 100%; 
+  max-width: 1920px;
   height: 4em;
   background: var(--menu-color);
   z-index: 10;
@@ -263,7 +265,7 @@ header {
 /** položky v menu */
 nav ul {
   font-size: 29px;
-  position: fixed;
+  position: fixed;   
   margin-top: 20px;
   margin-left: 40%;
   z-index: 100;
@@ -468,7 +470,8 @@ nav ul li a::before {
 .arrow-up {
   display: flex;
   justify-content: right;
-  width: 95%;
+  width: 95%; 
+  max-width: 1920px;
   position: fixed;
   top: 90%;
 }
