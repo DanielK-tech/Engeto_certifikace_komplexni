@@ -52,13 +52,13 @@
 @media only screen and (max-width: 600px) {
   .main-menu ul li a {
     display: none;
-  }  
+  }
 
   .picture-gallery img {
     height: 350px;
-  } 
+  }
 
-  .contact ul{ 
+  .contact ul {
     font-size: 1.4em;
   }
 }

@@ -1,60 +1,72 @@
-const BodyInPage = document.querySelector("body") as HTMLElement; //body 
-const Header = document.querySelector('header') as HTMLElement //header
-const footerInPage = document.querySelector('footer') as HTMLElement;
-const DarkMode = document.getElementById("Dark") as HTMLInputElement; /** check box **/
-const menuBackgroud = document.getElementById('navigation-one') as HTMLDivElement; //pozadí menu
-const LoginFormular = document.getElementById('Formular-div') as HTMLDivElement;
-const InvalidTryText = document.getElementById('Check-pass') as HTMLParagraphElement; //invalid paragraf
-const Arrow = document.getElementById('arrow-UP') as HTMLImageElement
-const Hamburger = document.getElementById('Hamburger') as HTMLDivElement; //hamburger menu
+const BodyInPage = document.querySelector("body") as HTMLElement; //body
+const Header = document.querySelector("header") as HTMLElement; //header
+const footerInPage = document.querySelector("footer") as HTMLElement;
+const DarkMode = document.getElementById(
+  "Dark"
+) as HTMLInputElement; /** check box **/
+const menuBackgroud = document.getElementById(
+  "navigation-one"
+) as HTMLDivElement; //pozadí menu
+const LoginFormular = document.getElementById("Formular-div") as HTMLDivElement;
+const InvalidTryText = document.getElementById(
+  "Check-pass"
+) as HTMLParagraphElement; //invalid paragraf
+const Arrow = document.getElementById("arrow-UP") as HTMLImageElement;
+const Hamburger = document.getElementById("Hamburger") as HTMLDivElement; //hamburger menu
 //Položky ve stránce
-const Photos = document.getElementById('projekty') as HTMLElement; //sekce fotky
-const AboutMe = document.getElementById('about-me') as HTMLElement; //sekce o mě
-const Contact = document.getElementById('My-info') as HTMLDivElement;
+const Photos = document.getElementById("projekty") as HTMLElement; //sekce fotky
+const AboutMe = document.getElementById("about-me") as HTMLElement; //sekce o mě
+const Contact = document.getElementById("My-info") as HTMLDivElement;
 //odkazy v menu (odkazuji na položky na stránce)
-const MojeTvorba = document.querySelectorAll('.tvorba') as NodeListOf<HTMLAnchorElement>;
-const Ome = document.querySelectorAll('.o-me') as NodeListOf<HTMLAnchorElement>;
-const Kontakt = document.querySelectorAll('.kontact') as NodeListOf<HTMLAnchorElement>;
-//vyjížděcí menu 
-const SecondMenu = document.getElementById('second-nav-menu') as HTMLDivElement;
-const CrossRed = document.getElementById('Red-Cross') as HTMLAnchorElement;
-const DarkBoxMode = document.getElementById('mode') as HTMLDivElement;
+const MojeTvorba = document.querySelectorAll(
+  ".tvorba"
+) as NodeListOf<HTMLAnchorElement>;
+const Ome = document.querySelectorAll(".o-me") as NodeListOf<HTMLAnchorElement>;
+const Kontakt = document.querySelectorAll(
+  ".kontact"
+) as NodeListOf<HTMLAnchorElement>;
+//vyjížděcí menu
+const SecondMenu = document.getElementById("second-nav-menu") as HTMLDivElement;
+const CrossRed = document.getElementById("Red-Cross") as HTMLAnchorElement;
+const DarkBoxMode = document.getElementById("mode") as HTMLDivElement;
 //formulář na hesla
-const PasswordInput = document.getElementById('password1') as HTMLInputElement;
-const PasswordCheck = document.getElementById('password2') as HTMLInputElement;
+const PasswordInput = document.getElementById("password1") as HTMLInputElement;
+const PasswordCheck = document.getElementById("password2") as HTMLInputElement;
 // tlačítko přihlásit se
-const LoginButton = document.getElementById('Login') as HTMLInputElement;
+const LoginButton = document.getElementById("Login") as HTMLInputElement;
 /*********************************************************************************************************** */
 
 /** vytahnutí proměných z css */
 const root = document.documentElement;
-const darkModeColor = getComputedStyle(root).getPropertyValue('--menu_background'); //vytáhnutí konkrétní barvy
-const headerOriginal = getComputedStyle(Header).getPropertyValue('background'); //background headeru
-const ContactBackground = getComputedStyle(Contact).getPropertyValue('background'); //background u Kontakt
+const darkModeColor =
+  getComputedStyle(root).getPropertyValue("--menu_background"); //vytáhnutí konkrétní barvy
+const headerOriginal = getComputedStyle(Header).getPropertyValue("background"); //background headeru
+const ContactBackground =
+  getComputedStyle(Contact).getPropertyValue("background"); //background u Kontakt
 /**uložení původní barvy v menu */
 const originalBackgroundColor = getComputedStyle(menuBackgroud).background;
-/*************************************************************************************************************  
+/*************************************************************************************************************
  * *************************************** FUNKCE ************************************************************
-*************************************************************************************************************/
+ *************************************************************************************************************/
 
 /** funkce pro dark mode */
 const bodyClick = (): void => {
   if (DarkMode.checked) {
     BodyInPage.classList.add("dark-mode");
-    Header.style.background = 'transparent';
+    Header.style.background = "transparent";
     menuBackgroud.style.background = darkModeColor;
     LoginFormular.style.background = darkModeColor;
-    Contact.style.background = 'transparent';
+    Contact.style.background = "transparent";
     footerInPage.style.background = darkModeColor;
   } else {
-    BodyInPage.classList.remove('dark-mode');
+    BodyInPage.classList.remove("dark-mode");
     Header.style.background = headerOriginal;
     menuBackgroud.style.background = originalBackgroundColor;
     LoginFormular.style.background = originalBackgroundColor;
     Contact.style.background = ContactBackground;
     footerInPage.style.background = originalBackgroundColor;
   }
-}
+};
 /************************************************************** */
 /** funkce pro kontrolu hesel  **/
 
@@ -64,25 +76,25 @@ const PassChecking = (event: any): void => {
   const password2 = PasswordCheck.value;
 
   if (password1 !== password2) {
-    InvalidTryText.classList.remove('none');
+    InvalidTryText.classList.remove("none");
   } else {
-    InvalidTryText.classList.add('none');
+    InvalidTryText.classList.add("none");
   }
-}
+};
 /************************************************************************ */
 /** funkce na scrolování (šipka se objeví/zmizí) **/
 const ScrollingDown = (): void => {
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    Arrow.style.display = 'block';
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    Arrow.style.display = "block";
   } else {
-    Arrow.style.display = 'none';
+    Arrow.style.display = "none";
   }
-}
+};
 
 const ArrowUp = (): void => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  Arrow.style.display = 'none';
-}
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  Arrow.style.display = "none";
+};
 /*********************************************************************** */
 /** funkce na přesun v menu **/
 
@@ -92,85 +104,90 @@ const GalerryClick = (e: any): void => {
     // 15% nad element
     const offset = window.innerHeight * 0.15;
     //pozice elementu - 15%
-    const targetPosition = Photos.getBoundingClientRect().top + window.scrollY - offset;
+    const targetPosition =
+      Photos.getBoundingClientRect().top + window.scrollY - offset;
     //scrolování na pozici nad element
     window.scrollTo({
       top: targetPosition,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
-}
+};
 /** funkce na přesun (o Mě) **/
 const OmeClick = (e: any): void => {
   e.preventDefault();
   if (AboutMe) {
     const offset = window.innerHeight * 0.15;
-    const targetPosition = AboutMe.getBoundingClientRect().top + window.scrollY - offset;
+    const targetPosition =
+      AboutMe.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({
       top: targetPosition,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
-}
+};
 /**Funkce na přesun (Kontakt) **/
 const KontaktClick = (e: any): void => {
   e.preventDefault();
   if (Contact) {
     const offset = window.innerHeight * 0.15;
-    const targetPosition = Contact.getBoundingClientRect().top + window.scrollY - offset;
+    const targetPosition =
+      Contact.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({
       top: targetPosition,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
-}
+};
 /**************************************************************** */
 /** funkce na vyjížděcí menu a křížek **/
 
 //hamburger
 const HamburgerClick = (): void => {
-  SecondMenu.style.display = 'flex';
-  DarkBoxMode.style.display = 'none';
-  Hamburger.style.display = 'none';
-  menuBackgroud.style.display = 'none';
-
-}
+  SecondMenu.style.display = "flex";
+  DarkBoxMode.style.display = "none";
+  Hamburger.style.display = "none";
+  menuBackgroud.style.display = "none";
+};
 /** fce na křížek v hamburgeru **/
 const CrossClick = (e: any): void => {
   e.preventDefault();
-  SecondMenu.style.display = 'none';
-  DarkBoxMode.style.display = 'flex';
-  Hamburger.style.display = 'block';
-  menuBackgroud.style.display = 'block';
+  SecondMenu.style.display = "none";
+  DarkBoxMode.style.display = "flex";
+  Hamburger.style.display = "block";
+  menuBackgroud.style.display = "block";
 };
 /***********************************************************************
  * ********************* AKCE KLIKÁNÍ **********************************
  ***********************************************************************/
 
 /** akce **/
-if (DarkMode && MojeTvorba && Ome && Kontakt && LoginButton && Arrow && Hamburger && CrossRed) {
-  
+if (
+  DarkMode &&
+  MojeTvorba &&
+  Ome &&
+  Kontakt &&
+  LoginButton &&
+  Arrow &&
+  Hamburger &&
+  CrossRed
+) {
   DarkMode.addEventListener("change", bodyClick);
   //posluchače na více elementu se stejnou třídou
   Array.from(MojeTvorba).forEach((element: HTMLAnchorElement) => {
-    element.addEventListener('click', GalerryClick);
+    element.addEventListener("click", GalerryClick);
   });
   Array.from(Ome).forEach((element: HTMLAnchorElement) => {
-    element.addEventListener('click', OmeClick);
+    element.addEventListener("click", OmeClick);
   });
   Array.from(Kontakt).forEach((element: HTMLAnchorElement) => {
-    element.addEventListener('click', KontaktClick);
+    element.addEventListener("click", KontaktClick);
   });
   //
-  LoginButton.addEventListener('click', PassChecking);
-  Arrow.addEventListener('click', ArrowUp);
-  Hamburger.addEventListener('click', HamburgerClick);
-  CrossRed.addEventListener('click', CrossClick);
+  LoginButton.addEventListener("click", PassChecking);
+  Arrow.addEventListener("click", ArrowUp);
+  Hamburger.addEventListener("click", HamburgerClick);
+  CrossRed.addEventListener("click", CrossClick);
 }
 
-window.addEventListener('scroll', ScrollingDown);
-
-
-
-
-
+window.addEventListener("scroll", ScrollingDown);

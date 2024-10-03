@@ -6,14 +6,19 @@
   --darMode_text: #fff;
   --menu_background: rgba(67, 67, 87, 0.7);
   --menu-text-color: rgb(255, 247, 247);
-  --background-gradient:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5));
-  --warning-color:red;
+  --background-gradient: linear-gradient(
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.5)
+  );
+  --warning-color: red;
   /* menu*/
   --menu-color: rgba(0, 0, 0, 0.7);
   --border-color-menu: #dc4f00;
-  --podsviceni: radial-gradient(circle farthest-corner at 10% 20%,
-      rgba(255, 94, 247, 1) 17.8%,
-      rgba(2, 245, 255, 1) 100.2%);
+  --podsviceni: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(255, 94, 247, 1) 17.8%,
+    rgba(2, 245, 255, 1) 100.2%
+  );
   /*hamburger*/
   --hamburger: rgb(20, 20, 180);
 }
@@ -40,8 +45,7 @@ body {
 }
 
 header {
-  background: var(--background-gradient),
-    url(./img/img_4.jpg);
+  background: var(--background-gradient), url(./img/img_4.jpg);
 }
 
 .dark-mode {
@@ -92,7 +96,7 @@ header {
 }
 
 @media (min-width: 610px) {
-  .hamburger  {
+  .hamburger {
     display: none;
   }
 }
@@ -294,7 +298,7 @@ nav ul li a::after {
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: var(--border-color-menu);  
+  background-color: var(--border-color-menu);
   transition: width 2.5s;
   z-index: 1;
 }
@@ -344,7 +348,7 @@ nav ul li a::before {
 /**** obrázky v galerii */
 .picture-gallery {
   display: flex;
-  justify-content: space-evenly;  
+  justify-content: space-evenly;
 }
 
 .picture-gallery img {
@@ -420,7 +424,7 @@ nav ul li a::before {
 }
 
 /*div pod loginem*/
-.fomular {  
+.fomular {
   width: 100%;
   height: 100%;
   padding: 40px;
@@ -487,7 +491,6 @@ nav ul li a::before {
 
 /*Sekce kotakt*/
 .contact {
-
   line-height: 1.5;
   background: var(--background-gradient), url(./img/img_4.jpg);
 
@@ -503,16 +506,12 @@ nav ul li a::before {
   list-style-type: none;
   margin-left: 10%;
   font-size: 1.8em;
-
 }
 
 .contact ul li a {
   text-decoration: none;
   color: var(--darMode_text);
-
 }
-
-
 
 /************ footer **************/
 
@@ -530,11 +529,10 @@ footer {
   position: relative;
   color: var(--darMode_text);
   z-index: 2;
-} 
+}
 
-.facebook-anchor:hover{ 
-  cursor: pointer; 
-  
+.facebook-anchor:hover {
+  cursor: pointer;
 }
 
 .footer-p::before {
