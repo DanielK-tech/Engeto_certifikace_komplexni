@@ -4,7 +4,7 @@
   .section .picture-gallery {
     display: block;
   }
-  #hamburger {
+  .hamburger {
     margin-top: 10px;
     margin-left: 80%;
   }
@@ -15,7 +15,7 @@
     height: 550px;
     margin-bottom: 5px;
   }
-  #about-me {
+  .section-two {
     /* o mě sekce*/
     flex-direction: column;
     justify-content: center;
