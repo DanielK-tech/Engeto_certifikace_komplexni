@@ -604,7 +604,7 @@ footer {
 }
 /***** loader ******/
 .loader {
-    width: 150px; 
+    width: 100%;
     margin: 0 auto;
     aspect-ratio: 1;
     display: none; /* grid; */
