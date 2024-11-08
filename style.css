@@ -55,7 +55,9 @@ body {
 }
 
 header {
-    background: var(--background-gradient), url(./img/img_4.jpg);
+    background: var(--background-gradient), url(./img/img_4.jpg); 
+    min-height: 100vh; 
+    
 }
 
 .dark-mode {
@@ -202,7 +204,8 @@ header {
 .second-menu a:hover,
 .second-menu a:active {
     transition: border-bottom 2.5s;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent; 
+    
 }
 
 .second-menu a:hover::after,
@@ -312,7 +315,8 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 10px; 
+    transition: 0.5s;
 }
 
 nav ul li a:link,
@@ -327,7 +331,8 @@ nav ul li a:visited {
 nav ul li a:hover,
 nav ul li a:active {
     transition: border-bottom 2.5s;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent; 
+    
 }
 
 nav ul li a::after {
@@ -358,6 +363,9 @@ nav ul li a::before {
     left: 0;
     top: 0;
     z-index: -1;
+} 
+nav ul li:hover{ 
+    transform: scale(1.3);
 }
 
 /*****************************************************/
