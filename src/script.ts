@@ -187,3 +187,24 @@ if (
 }
 
 window.addEventListener("scroll", ScrollingDown);
+
+/*************************************************************************************************************
+ * *************************************** SCROLLING SMILE ****************************************************
+ *************************************************************************************************************/
+//scrolující smajlík 
+const scrollImage = document.getElementById('Scroll') as HTMLImageElement;
+let lastScrollTop = 0;
+/**FCE na skroling */
+const handleScroll = (): void => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;  
+  scrollImage.style.display = 'block';
+  scrollImage.style.animation = (scrollTop > lastScrollTop) ? 'rotate-left 1s linear infinite' : 'rotate-right 1s linear infinite';
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+
+  // Skyrytí obrázku po čase
+  clearTimeout((scrollImage as any).hideTimeout);
+  (scrollImage as any).hideTimeout = setTimeout(() => {
+    scrollImage.style.display = 'none';
+  }, 300); // potomto  čase se skryje
+};
+window.addEventListener('scroll', handleScroll);

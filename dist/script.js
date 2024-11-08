@@ -130,3 +130,16 @@ if (DarkMode &&
     CrossRed.addEventListener("click", CrossClick);
 }
 window.addEventListener("scroll", ScrollingDown);
+const scrollImage = document.getElementById('Scroll');
+let lastScrollTop = 0;
+const handleScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    scrollImage.style.display = 'block';
+    scrollImage.style.animation = (scrollTop > lastScrollTop) ? 'rotate-left 1s linear infinite' : 'rotate-right 1s linear infinite';
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    clearTimeout(scrollImage.hideTimeout);
+    scrollImage.hideTimeout = setTimeout(() => {
+        scrollImage.style.display = 'none';
+    }, 300);
+};
+window.addEventListener('scroll', handleScroll);
