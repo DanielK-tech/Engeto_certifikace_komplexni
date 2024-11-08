@@ -57,7 +57,7 @@ body {
 header {
     background: var(--background-gradient), url(./img/img_4.jpg); 
     min-height: 100vh; 
-    
+    min-height: 100dvh;
 }
 
 .dark-mode {
