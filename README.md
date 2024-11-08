@@ -1,3 +1,3 @@
 Závěrečná práce do Engeta 
 
-Psaná v TypeScript jazyce
+<strong>Psaná v TypeScript jazyce </strong> (Nestihl jsem včas přidat .prettierignore nebo vypnout formátování v pretieru :( )
