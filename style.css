@@ -21,6 +21,16 @@
     );
     /*hamburger*/
     --hamburger: rgb(20, 20, 180);
+    /*loader*/
+    --loader-gradient-mask: conic-gradient(from 15deg, #0003, #000);
+    --loader-gradient-after: radial-gradient(
+                closest-side at 50% 12.5%,
+                currentColor 90%,
+                #0000 98%
+            )
+            50% 0/20% 80% repeat-y,
+        radial-gradient(closest-side at 12.5% 50%, currentColor 90%, #0000 98%)
+            0 50%/80% 20% repeat-x;
 }
 
 * {
@@ -51,7 +61,7 @@ header {
 .dark-mode {
     background-color: var(--dark_mode);
     color: var(--darMode_text);
-} 
+}
 /* skrolující smajlík ***/
 .scroll-image {
     display: none;
@@ -60,7 +70,7 @@ header {
     right: 10px;
     width: 100px;
     height: 100px;
-    transition: transform 0.3s linear; 
+    transition: transform 0.3s linear;
     z-index: 99999999999999999999999999999;
 }
 @keyframes rotate-left {
@@ -294,7 +304,7 @@ header {
 nav ul {
     font-size: 29px;
     position: fixed;
-    margin-top: 20px;    
+    margin-top: 20px;
     width: 100%;
     text-align: center;
     z-index: 100;
@@ -402,7 +412,6 @@ nav ul li a::before {
     gap: 10px;
 }
 
-
 /* o mě div*/
 .my-description {
     display: flex;
@@ -499,12 +508,12 @@ nav ul li a::before {
 /*Přihlásit tlačítko*/
 .log-in {
     font-weight: bold;
-    font-size: 1.8em; 
+    font-size: 1.8em;
     transition: 0.5s;
 }
 
 .log-in:hover {
-    cursor: pointer;  
+    cursor: pointer;
     color: var(--menu-text-color);
     background: var(--menu_background);
 }
@@ -518,7 +527,7 @@ nav ul li a::before {
     justify-content: right;
     width: 95%;
     max-width: 1920px;
-    position: fixed;    
+    position: fixed;
     bottom: 30px;
     right: 15px;
 }
@@ -592,4 +601,36 @@ footer {
     left: 0;
     top: 0;
     z-index: -1;
+}
+/***** loader ******/
+.loader {
+    width: 150px; 
+    margin: 0 auto;
+    aspect-ratio: 1;
+    display: none; /* grid; */
+    -webkit-mask: var(--loader-gradient-mask);
+    mask: var(--loader-gradient-mask);
+    animation: load 1s steps(12) infinite;
+}
+.loader,
+.loader:before,
+.loader:after {
+    background: var(--loader-gradient-after);
+}
+.loader:before,
+.loader:after {
+    content: "";
+    grid-area: 1/1;
+    transform: rotate(30deg);
+}
+.loader:after {
+    transform: rotate(60deg);
+}
+@keyframes load {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
 }

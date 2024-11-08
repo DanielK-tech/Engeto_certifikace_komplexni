@@ -33,9 +33,14 @@ const DarkBoxMode = document.getElementById("mode") as HTMLDivElement;
 const PasswordInput = document.getElementById("password1") as HTMLInputElement;
 const PasswordCheck = document.getElementById("password2") as HTMLInputElement; 
 const UserName = document.getElementById("Username") as HTMLInputElement; 
-// tlačítko přihlásit se
+// tlačítko přihlásit se 
+const formular = document.getElementById("Formular-main") as HTMLDivElement;
 const LoginButton = document.getElementById("Login") as HTMLInputElement; 
-const warningText = document.getElementById("Check-name") as HTMLParagraphElement;
+const warningText = document.getElementById("Check-name") as HTMLParagraphElement;   
+const passVal = document.getElementById("Check-pass-val") as HTMLParagraphElement;
+const CapsLock = document.getElementById("Warning") as HTMLParagraphElement; 
+/** loader */ 
+const loader = document.getElementById("Loader") as HTMLDivElement;
 /*********************************************************************************************************** */
 
 /** vytahnutí proměných z css */
@@ -69,7 +74,15 @@ const bodyClick = (): void => {
     footerInPage.style.background = originalBackgroundColor;
   }
 };
-/************************************************************** */
+/************************************************************** */ 
+/*** FCE Kontrola KapsoLoku */
+function controling(event: KeyboardEvent) {
+  if (event.getModifierState("CapsLock")) {
+    CapsLock.classList.remove("none");
+  } else {
+    CapsLock.classList.add("none");
+  }
+} 
 /** funkce pro kontrolu hesel a jména  **/
 
 const PassChecking = (event: Event): void => {
@@ -79,7 +92,22 @@ const PassChecking = (event: Event): void => {
   const usernameValue = UserName.value;
   
   InvalidTryText.classList.toggle("none", password1 === password2);
-  warningText.classList.toggle("none", usernameValue !== "");
+  warningText.classList.toggle("none", usernameValue !== "");    
+  //
+  if (!password1 && !password2) {
+    passVal.classList.remove("none");
+  } else {
+    passVal.classList.add("none");
+  } 
+  // zobrazení loaderu
+  if (password1 === password2 && usernameValue) {
+    loader.style.display = "grid";
+    formular.style.display = "none";
+    setTimeout((): void => {
+      loader.style.display = "none";
+      formular.style.display = "block";
+    }, 3000);
+  }
 };
 /************************************************************************ */
 /** funkce na scrolování (šipka se objeví/zmizí) **/
@@ -187,7 +215,7 @@ if (
 }
 
 window.addEventListener("scroll", ScrollingDown);
-
+window.addEventListener("keyup", controling); //kontrola capslocku
 /*************************************************************************************************************
  * *************************************** SCROLLING SMILE ****************************************************
  *************************************************************************************************************/
@@ -199,11 +227,11 @@ const handleScroll = (): void => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;  
   scrollImage.style.display = 'block';
   scrollImage.style.animation = (scrollTop > lastScrollTop) ? 'rotate-left 1s linear infinite' : 'rotate-right 1s linear infinite';
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
 
   // Skyrytí obrázku po čase
   clearTimeout((scrollImage as any).hideTimeout);
-  (scrollImage as any).hideTimeout = setTimeout(() => {
+  (scrollImage as any).hideTimeout = setTimeout((): void => {
     scrollImage.style.display = 'none';
   }, 300); // potomto  čase se skryje
 };

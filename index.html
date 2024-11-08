@@ -21,9 +21,9 @@
         <title>Komplexni stránka</title>
     </head>
     <body>
-        <header> 
-          <!--Scroling smajlik--> 
-          <img
+        <header>
+            <!--Scroling smajlik-->
+            <img
                 src="./img/smile.png"
                 alt="Rotující smajlík"
                 id="Scroll"
@@ -136,7 +136,7 @@
                 </div>
 
                 <div id="Formular-div" class="login-section">
-                    <div class="fomular">
+                    <div id="Formular-main" class="fomular">
                         <h2>Přihlásit se</h2>
                         <form class="login-format" action="">
                             <div class="inputs">
@@ -176,10 +176,17 @@
                                 <p id="Check-pass" class="invalid none">
                                     Vaše hesla se neshodují !
                                 </p>
-                                <p id="Check-name" class="none">Zadejte uživatelské jméno !</p>
+                                <p id="Check-name" class="none">
+                                    Zadejte uživatelské jméno !
+                                </p> 
+                                <p id="Check-pass-val" class="none">Zadejte heslo !</p>
+                                <p id="Warning" class="check-warning none">
+                                    Varování! Caps lock je ZAPNUTÝ
+                                </p>
                             </div>
                         </form>
-                    </div>
+                    </div> 
+                    <div id="Loader" class="loader"></div>
                 </div>
             </section>
         </main>

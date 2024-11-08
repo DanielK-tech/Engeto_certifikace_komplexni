@@ -20,8 +20,12 @@ const DarkBoxMode = document.getElementById("mode");
 const PasswordInput = document.getElementById("password1");
 const PasswordCheck = document.getElementById("password2");
 const UserName = document.getElementById("Username");
+const formular = document.getElementById("Formular-main");
 const LoginButton = document.getElementById("Login");
 const warningText = document.getElementById("Check-name");
+const passVal = document.getElementById("Check-pass-val");
+const CapsLock = document.getElementById("Warning");
+const loader = document.getElementById("Loader");
 const root = document.documentElement;
 const darkModeColor = getComputedStyle(root).getPropertyValue("--menu_background");
 const headerOriginal = getComputedStyle(Header).getPropertyValue("background");
@@ -45,6 +49,14 @@ const bodyClick = () => {
         footerInPage.style.background = originalBackgroundColor;
     }
 };
+function controling(event) {
+    if (event.getModifierState("CapsLock")) {
+        CapsLock.classList.remove("none");
+    }
+    else {
+        CapsLock.classList.add("none");
+    }
+}
 const PassChecking = (event) => {
     event.preventDefault();
     const password1 = PasswordInput.value;
@@ -52,6 +64,20 @@ const PassChecking = (event) => {
     const usernameValue = UserName.value;
     InvalidTryText.classList.toggle("none", password1 === password2);
     warningText.classList.toggle("none", usernameValue !== "");
+    if (!password1 && !password2) {
+        passVal.classList.remove("none");
+    }
+    else {
+        passVal.classList.add("none");
+    }
+    if (password1 === password2 && usernameValue) {
+        loader.style.display = "grid";
+        formular.style.display = "none";
+        setTimeout(() => {
+            loader.style.display = "none";
+            formular.style.display = "block";
+        }, 3000);
+    }
 };
 const ScrollingDown = () => {
     Arrow.style.display = (window.innerHeight + window.scrollY >= document.body.offsetHeight) ? "block" : "none";
@@ -130,6 +156,7 @@ if (DarkMode &&
     CrossRed.addEventListener("click", CrossClick);
 }
 window.addEventListener("scroll", ScrollingDown);
+window.addEventListener("keyup", controling);
 const scrollImage = document.getElementById('Scroll');
 let lastScrollTop = 0;
 const handleScroll = () => {
