@@ -7,7 +7,7 @@ const DarkMode = document.getElementById(
 const menuBackgroud = document.getElementById(
   "navigation-one"
 ) as HTMLDivElement; //pozadí menu
-const LoginFormular = document.getElementById("Formular-div") as HTMLDivElement;
+const LoginFormular = document.querySelector(".fomular") as HTMLDivElement;
 const InvalidTryText = document.getElementById(
   "Check-pass"
 ) as HTMLParagraphElement; //invalid paragraf
@@ -31,9 +31,11 @@ const CrossRed = document.getElementById("Red-Cross") as HTMLAnchorElement;
 const DarkBoxMode = document.getElementById("mode") as HTMLDivElement;
 //formulář na hesla
 const PasswordInput = document.getElementById("password1") as HTMLInputElement;
-const PasswordCheck = document.getElementById("password2") as HTMLInputElement;
+const PasswordCheck = document.getElementById("password2") as HTMLInputElement; 
+const UserName = document.getElementById("Username") as HTMLInputElement; 
 // tlačítko přihlásit se
-const LoginButton = document.getElementById("Login") as HTMLInputElement;
+const LoginButton = document.getElementById("Login") as HTMLInputElement; 
+const warningText = document.getElementById("Check-name") as HTMLParagraphElement;
 /*********************************************************************************************************** */
 
 /** vytahnutí proměných z css */
@@ -68,27 +70,21 @@ const bodyClick = (): void => {
   }
 };
 /************************************************************** */
-/** funkce pro kontrolu hesel  **/
+/** funkce pro kontrolu hesel a jména  **/
 
-const PassChecking = (event: any): void => {
+const PassChecking = (event: Event): void => {
   event.preventDefault();
   const password1 = PasswordInput.value;
-  const password2 = PasswordCheck.value;
-
-  if (password1 !== password2) {
-    InvalidTryText.classList.remove("none");
-  } else {
-    InvalidTryText.classList.add("none");
-  }
+  const password2 = PasswordCheck.value; 
+  const usernameValue = UserName.value;
+  
+  InvalidTryText.classList.toggle("none", password1 === password2);
+  warningText.classList.toggle("none", usernameValue !== "");
 };
 /************************************************************************ */
 /** funkce na scrolování (šipka se objeví/zmizí) **/
-const ScrollingDown = (): void => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    Arrow.style.display = "block";
-  } else {
-    Arrow.style.display = "none";
-  }
+const ScrollingDown = (): void => {  
+  Arrow.style.display = (window.innerHeight + window.scrollY >= document.body.offsetHeight) ? "block" : "none";
 };
 
 const ArrowUp = (): void => {
@@ -98,7 +94,7 @@ const ArrowUp = (): void => {
 /*********************************************************************** */
 /** funkce na přesun v menu **/
 
-const GalerryClick = (e: any): void => {
+const GalerryClick = (e: Event): void => {
   e.preventDefault();
   if (Photos) {
     // 15% nad element
@@ -114,7 +110,7 @@ const GalerryClick = (e: any): void => {
   }
 };
 /** funkce na přesun (o Mě) **/
-const OmeClick = (e: any): void => {
+const OmeClick = (e: Event): void => {
   e.preventDefault();
   if (AboutMe) {
     const offset = window.innerHeight * 0.15;
@@ -127,7 +123,7 @@ const OmeClick = (e: any): void => {
   }
 };
 /**Funkce na přesun (Kontakt) **/
-const KontaktClick = (e: any): void => {
+const KontaktClick = (e: Event): void => {
   e.preventDefault();
   if (Contact) {
     const offset = window.innerHeight * 0.15;
@@ -150,7 +146,7 @@ const HamburgerClick = (): void => {
   menuBackgroud.style.display = "none";
 };
 /** fce na křížek v hamburgeru **/
-const CrossClick = (e: any): void => {
+const CrossClick = (e: Event): void => {
   e.preventDefault();
   SecondMenu.style.display = "none";
   DarkBoxMode.style.display = "flex";
