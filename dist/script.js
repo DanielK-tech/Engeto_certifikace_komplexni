@@ -59,13 +59,14 @@ function controling(event) {
 }
 const PassChecking = (event) => {
     event.preventDefault();
-    const password1 = PasswordInput.value;
-    const password2 = PasswordCheck.value;
-    const usernameValue = UserName.value;
+    const password1 = PasswordInput.value.trim();
+    const password2 = PasswordCheck.value.trim();
+    const usernameValue = UserName.value.trim();
     InvalidTryText.classList.toggle("none", password1 === password2);
     warningText.classList.toggle("none", usernameValue !== "");
-    if (!password1 && !password2) {
+    if (!password1 || !password2) {
         passVal.classList.remove("none");
+        return;
     }
     else {
         passVal.classList.add("none");
